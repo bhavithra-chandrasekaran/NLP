@@ -12,12 +12,11 @@ sentences = [
 ]
 model = defaultdict(list)
 for sent in sentences:
-words = sent.split()
-for i in range(len(words) - 1):
-model[words[i]].append(words[i + 1])
+    words = sent.split()
+    for i in range(len(words) - 1):
+        model[words[i]].append(words[i + 1])
 next_word_model = {}
 for word, next_words in model.items():
-next_word_model[word] = Counter(next_words).most_common(1)[0][0]
+    next_word_model[word] = Counter(next_words).most_common(1)[0][0]
 input_word = "find"
-print("Next word suggestion for", input_word, ":", next_word_model.get(input_word, "No
-suggestion"))
+print("Next word suggestion for", input_word, ":", next_word_model.get(input_word, "No suggestion"))
